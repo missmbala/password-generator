@@ -94,12 +94,12 @@ var upperCasedCharacters = [
 //var passwordDisplay = document.getElementById("passwordDisplay"); 
 
 // Function to prompt user for password options
-function getPasswordOptions() {
-  alert("Your password should contain between 10 and 64 characters");
-  alert("Your password should contain uppercase and lowercase letters");
-  alert("Your password should contain numeric and special characters");
-}
-getPasswordOptions();
+// function getPasswordOptions() {
+//   alert("Your password should contain between 10 and 64 characters");
+//   alert("Your password should contain uppercase and lowercase letters");
+//   alert("Your password should contain numeric and special characters");
+// }
+// getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -125,16 +125,16 @@ function generatePassword() {
 
   let charCodes = [];
   if (characterLowecase) {
-    charCodes = charCodes.concat(LOWERCASE_CODES);
+    charCodes = charCodes.concat(lowerCasedCharacters);
   }
   if (characterUppercase) {
-    charCodes = charCodes.concat(UPPERCASE_CODES);
+    charCodes = charCodes.concat(upperCasedCharacters);
   }
   if (characterSpecial) {
-    charCodes = charCodes.concat(SYMBOLS_CODES);
+    charCodes = charCodes.concat(specialCharacters);
   }
   if (characterNumbers) {
-    charCodes = charCodes.concat(NUMBER_CODES);
+    charCodes = charCodes.concat(numericCharacters);
   }
   if (charCodes.length === 0) {
     alert("Please choose at least one set of characters");
@@ -142,26 +142,10 @@ function generatePassword() {
   }
   var passwordCharacters = Array.from({length: passwordLength}, () => {
     var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)];
-    return String.fromCharCode(characterCode);
+    return characterCode;
   })
   return passwordCharacters.join('');
 }
-
-//const randomPassword =
-//"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$!%^&*()_+=-";
-
-  //let password = "";
-  //for (let i = 0; i <length; ++i) {
-  //let at = Math.floor(Math.random() * (randomPassword.length + 1));
-    //password += randomPassword.charAt(at); 
-  //}
-
-// alert 
-//return random password
-
-//}
-
-/// do not change any of the below ??? 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -170,12 +154,7 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   document.getElementById("password").value = password;
-  //var passwordText = document.querySelector('#password');
-
-  //passwordText.value = password;
 }
-
-writePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
